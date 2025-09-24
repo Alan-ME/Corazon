@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Colomba ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            position: relative;
+            padding: 20px;
+        }
+
+        /* Partículas de fondo */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.8;
+            }
+        }
+
+        /* Contenedor principal */
+        .container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Corazón con imagen */
+        .heart {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            margin: 0 auto 20px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .heart img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.6));
+            transition: all 0.3s ease;
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+            14% {
+                transform: scale(1.1);
+            }
+            28% {
+                transform: scale(1);
+            }
+            42% {
+                transform: scale(1.1);
+            }
+            70% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes heartbeatIntense {
+            0% {
+                transform: scale(1);
+            }
+            10% {
+                transform: scale(1.2);
+            }
+            20% {
+                transform: scale(1);
+            }
+            30% {
+                transform: scale(1.25);
+            }
+            40% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.3);
+            }
+            60% {
+                transform: scale(1);
+            }
+            70% {
+                transform: scale(1.2);
+            }
+            80% {
+                transform: scale(1);
+            }
+            90% {
+                transform: scale(1.15);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Efecto de brillo en el corazón */
+        .heart img {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.6));
+            }
+            to {
+                filter: drop-shadow(0 0 40px rgba(255, 107, 107, 0.9)) drop-shadow(0 0 60px rgba(255, 107, 107, 0.4));
+            }
+        }
+
+        /* Nombre */
+        .name {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 15px;
+            animation: fadeInUp 2s ease-out;
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7f, #4d9de0);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 2s ease-out, gradientShift 3s ease-in-out infinite;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Mensaje */
+        .message {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 15px;
+            margin-bottom: 20px;
+            animation: fadeInUp 2s ease-out 0.5s both;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Efectos de estrellas */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Botón de interacción */
+        .love-button {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            border: none;
+            padding: 18px 35px;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            animation: fadeInUp 2s ease-out 1s both;
+            width: 100%;
+            max-width: 280px;
+            touch-action: manipulation;
+        }
+
+        .love-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        .love-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* Optimización para móviles */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .container {
+                max-width: 100%;
+            }
+            
+            .name {
+                font-size: 2.2rem;
+            }
+            
+            .heart {
+                width: 130px;
+                height: 130px;
+            }
+            
+            .message {
+                font-size: 1.1rem;
+            }
+            
+            .love-button {
+                padding: 16px 30px;
+                font-size: 1rem;
+                max-width: 100%;
+            }
+        }
+
+        /* Para pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            .name {
+                font-size: 2rem;
+            }
+            
+            .heart {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .message {
+                font-size: 1rem;
+            }
+            
+            .love-button {
+                padding: 14px 25px;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Efecto de pantalla negra */
+        .black-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            pointer-events: none;
+        }
+
+        .black-screen.show {
+            opacity: 1;
+        }
+
+        /* Flor amarilla con imagen */
+        .flower-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            text-align: center;
+        }
+
+        .flower-container.show {
+            opacity: 1;
+        }
+
+        .flower {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flower img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Mensaje de la flor */
+        .flower-message {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+            animation: fadeInUp 1s ease-out;
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #fff176);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Responsive para la flor */
+        @media (max-width: 768px) {
+            .flower {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .flower-message {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .flower {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .flower-message {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Partículas de fondo -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Estrellas -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- Contenido principal -->
+    <div class="container">
+        <div class="heart">
+            <img src="pngwing.com.png" alt="Corazón" />
+        </div>
+        <h1 class="name">Colomba</h1>
+        <p class="message">Con todo mi amor ❤️</p>
+        <button class="love-button" onclick="showLove()">💕 Toca mi corazón</button>
+    </div>
+
+    <!-- Pantalla negra -->
+    <div class="black-screen" id="blackScreen"></div>
+
+    <!-- Flor amarilla -->
+    <div class="flower-container" id="flowerContainer">
+        <div class="flower">
+            <img src="pngwin2g.com.png" alt="Flor amarilla" />
+        </div>
+        <div class="flower-message">Todo tuyo</div>
+    </div>
+
+    <script>
+        // Crear partículas flotantes
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = window.innerWidth < 768 ? 30 : 50; // Menos partículas en móvil
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.width = Math.random() * 3 + 1 + 'px'; // Partículas más pequeñas
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Crear estrellas parpadeantes
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = window.innerWidth < 768 ? 20 : 30; // Menos estrellas en móvil
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = Math.random() * 2 + 1 + 'px'; // Estrellas más pequeñas
+                star.style.height = star.style.width;
+                star.style.animationDelay = Math.random() * 2 + 's';
+                star.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Función del botón de amor
+        function showLove() {
+            const heart = document.querySelector('.heart');
+            const button = document.querySelector('.love-button');
+            const blackScreen = document.getElementById('blackScreen');
+            const flowerContainer = document.getElementById('flowerContainer');
+            
+            // Cambiar el texto del botón
+            button.textContent = 'TE AMO MUCHO';
+            button.disabled = true;
+            
+            // Aplicar latido más rápido e intenso
+            heart.style.animation = 'heartbeatIntense 0.8s ease-in-out infinite';
+            
+            // Cambiar el mensaje
+            const message = document.querySelector('.message');
+            const messages = [
+                "¡Mi corazón late por ti! 💓",
+                "Eres mi mundo 🌟",
+                "Te amo infinitamente 💕",
+                "Mi corazón late más fuerte 💖",
+                "Eres mi estrella ⭐",
+                "Para siempre juntos 💝"
+            ];
+            
+            let currentIndex = 0;
+            const interval = setInterval(() => {
+                message.textContent = messages[currentIndex];
+                currentIndex = (currentIndex + 1) % messages.length;
+            }, 1500);
+            
+            // Después de 2 segundos, activar pantalla negra
+            setTimeout(() => {
+                clearInterval(interval);
+                blackScreen.classList.add('show');
+                
+                // Después de 2 segundos de pantalla negra, mostrar la flor
+                setTimeout(() => {
+                    flowerContainer.classList.add('show');
+                }, 2000);
+                
+                // Después de 5 segundos de mostrar la flor, volver al estado normal
+                setTimeout(() => {
+                    blackScreen.classList.remove('show');
+                    flowerContainer.classList.remove('show');
+                    
+                    // Volver al estado original
+                    message.textContent = "Con todo mi amor ❤️";
+                    heart.style.animation = 'heartbeat 1.5s ease-in-out infinite';
+                    button.textContent = '💕 Toca mi corazón';
+                    button.disabled = false;
+                }, 7000); // 2s pantalla negra + 5s mostrar flor
+                
+            }, 2000);
+        }
+
+
+        // Inicializar efectos
+        window.addEventListener('load', () => {
+            createParticles();
+            createStars();
+        });
+
+    </script>
+</body>
+</html>
